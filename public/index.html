@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Forno &amp; Brasa — Pizzaria de forno a lenha</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Instrument+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#topo">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+          <path d="M3 13c0-5 4-9 9-9s9 4 9 9" />
+          <path d="M3 13h18l-2 6H5l-2-6Z" />
+          <circle cx="9" cy="15.5" r="0.8" fill="currentColor" stroke="none" />
+          <circle cx="13.5" cy="14.5" r="0.8" fill="currentColor" stroke="none" />
+          <circle cx="15" cy="16.5" r="0.8" fill="currentColor" stroke="none" />
+        </svg>
+      </span>
+      <span class="brand-name">Forno <em>&amp;</em> Brasa</span>
+    </a>
+    <button class="cart-toggle" id="cartToggle" type="button" aria-label="Abrir comanda" aria-expanded="false" aria-controls="ticket">
+      <span>Comanda</span>
+      <span class="cart-badge" id="cartBadge">0</span>
+    </button>
+  </header>
+
+  <main id="topo">
+    <section class="hero">
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="hero-inner">
+        <p class="eyebrow">Massa de fermentação natural · Forno a lenha</p>
+        <h1>Assada na boca do<br /><span>fogo, servida na brasa.</span></h1>
+        <p class="hero-lead">Dez pizzas de autor, saídas do forno a 400&nbsp;°C. Monte a sua comanda, escolha como quer receber e acompanhe o tempo de preparo em tempo real.</p>
+        <a class="hero-cta" href="#cardapio">Ver o cardápio</a>
+      </div>
+    </section>
+
+    <nav class="menu-nav" id="menuNav" aria-label="Categorias do cardápio">
+      <a href="#pizzas" data-target="pizzas" class="is-active">Pizzas</a>
+      <a href="#bebidas" data-target="bebidas">Bebidas</a>
+      <a href="#sobremesas" data-target="sobremesas">Sobremesas</a>
+    </nav>
+
+    <section class="menu" id="cardapio">
+      <article class="menu-section" id="pizzas">
+        <header class="section-head">
+          <span class="section-index">01</span>
+          <div>
+            <h2>Pizzas</h2>
+            <p>Bordas altas, miolo leve, ingredientes de origem.</p>
+          </div>
+        </header>
+        <div class="grid" data-grid="pizzas"></div>
+      </article>
+
+      <article class="menu-section" id="bebidas">
+        <header class="section-head">
+          <span class="section-index">02</span>
+          <div>
+            <h2>Bebidas</h2>
+            <p>Para equilibrar o calor do forno.</p>
+          </div>
+        </header>
+        <div class="grid" data-grid="bebidas"></div>
+      </article>
+
+      <article class="menu-section" id="sobremesas">
+        <header class="section-head">
+          <span class="section-index">03</span>
+          <div>
+            <h2>Sobremesas</h2>
+            <p>O doce final de toda boa mesa.</p>
+          </div>
+        </header>
+        <div class="grid" data-grid="sobremesas"></div>
+      </article>
+    </section>
+  </main>
+
+  <aside class="ticket" id="ticket" aria-label="Comanda do pedido" aria-hidden="true">
+    <section class="ticket-view" id="stepModality">
+      <div class="ticket-head">
+        <div>
+          <p class="ticket-kicker">Passo 1 de 3 · Modalidade</p>
+          <h2 class="ticket-title">Como deseja receber?</h2>
+        </div>
+        <button class="ticket-close" data-close type="button" aria-label="Fechar comanda">×</button>
+      </div>
+
+      <div class="ticket-perf" aria-hidden="true"></div>
+
+      <div class="modality">
+        <p class="field-label">Escolha a modalidade</p>
+        <div class="modality-options" id="modalityOptions" role="radiogroup" aria-label="Modalidade de entrega">
+          <button type="button" class="modality-btn is-active" data-modality="local" role="radio" aria-checked="true">Comer no local</button>
+          <button type="button" class="modality-btn" data-modality="retirada" role="radio" aria-checked="false">Retirar no balcão</button>
+          <button type="button" class="modality-btn" data-modality="entrega" role="radio" aria-checked="false">Entrega <em>+ R$ 10</em></button>
+        </div>
+      </div>
+
+      <button class="checkout" id="modalityContinue" type="button">Continuar</button>
+    </section>
+
+    <section class="ticket-view" id="stepReview" hidden>
+      <div class="ticket-head">
+        <div>
+          <p class="ticket-kicker">Passo 2 de 3 · Confirmação</p>
+          <h2 class="ticket-title">Confira seu pedido</h2>
+        </div>
+        <button class="ticket-close" data-close type="button" aria-label="Fechar comanda">×</button>
+      </div>
+
+      <div class="ticket-perf" aria-hidden="true"></div>
+
+      <div class="ticket-items" id="ticketItems"></div>
+
+      <div class="empty-state" id="emptyState">
+        <p>Sua comanda está vazia.</p>
+        <span>Adicione itens do cardápio para começar.</span>
+      </div>
+
+      <section class="suggestions" id="suggestions" hidden>
+        <p class="field-label">Que tal adicionar?</p>
+        <div class="suggestion-list" id="suggestionList"></div>
+      </section>
+
+      <div class="ticket-perf" aria-hidden="true"></div>
+
+      <div class="summary">
+        <div class="summary-line">
+          <span>Subtotal</span>
+          <span id="subtotal">R$ 0,00</span>
+        </div>
+        <div class="summary-line" id="feeLine" hidden>
+          <span>Taxa de entrega</span>
+          <span id="deliveryFee">R$ 0,00</span>
+        </div>
+        <div class="summary-total">
+          <span>Total</span>
+          <span id="total">R$ 0,00</span>
+        </div>
+      </div>
+
+      <div class="pay-actions">
+        <button class="pay-back" id="reviewBack" type="button">Voltar</button>
+        <button class="checkout" id="reviewContinue" type="button" disabled>Ir para o pagamento</button>
+      </div>
+    </section>
+
+    <section class="ticket-view" id="stepPayment" hidden>
+      <div class="ticket-head">
+        <div>
+          <p class="ticket-kicker">Passo 3 de 3 · Pagamento</p>
+          <h2 class="ticket-title">Como vai pagar?</h2>
+        </div>
+        <button class="ticket-close" data-close type="button" aria-label="Fechar comanda">×</button>
+      </div>
+
+      <div class="ticket-perf" aria-hidden="true"></div>
+
+      <div class="pay-methods" id="paymentMethods" role="radiogroup" aria-label="Forma de pagamento">
+        <button type="button" class="pay-btn" data-payment="cartao" role="radio" aria-checked="false">
+          <span class="pay-icon" aria-hidden="true">▭</span>
+          <span>Cartão</span>
+        </button>
+        <button type="button" class="pay-btn" data-payment="pix" role="radio" aria-checked="false">
+          <span class="pay-icon" aria-hidden="true">⌁</span>
+          <span>Pix</span>
+        </button>
+        <button type="button" class="pay-btn" data-payment="dinheiro" role="radio" aria-checked="false">
+          <span class="pay-icon" aria-hidden="true">$</span>
+          <span>Dinheiro</span>
+        </button>
+        <button type="button" class="pay-btn" data-payment="alimentacao" role="radio" aria-checked="false">
+          <span class="pay-icon" aria-hidden="true">☰</span>
+          <span>Alimentação</span>
+        </button>
+      </div>
+
+      <div class="change-block" id="changeBlock" hidden>
+        <p class="field-label">Precisa de troco?</p>
+        <div class="change-toggle" role="radiogroup" aria-label="Precisa de troco">
+          <button type="button" class="change-opt is-active" data-change="no" role="radio" aria-checked="true">Não</button>
+          <button type="button" class="change-opt" data-change="yes" role="radio" aria-checked="false">Sim</button>
+        </div>
+        <div class="change-input" id="changeInput" hidden>
+          <label class="field-label" for="changeFor">Troco para quanto?</label>
+          <div class="change-field">
+            <span aria-hidden="true">R$</span>
+            <input type="number" id="changeFor" inputmode="decimal" min="0" step="0.01" placeholder="0,00" />
+          </div>
+          <p class="change-hint" id="changeHint"></p>
+        </div>
+      </div>
+
+      <div class="prep" id="prepBlock" hidden>
+        <div class="prep-head">
+          <span class="field-label">Tempo de espera</span>
+          <span class="prep-value" id="prepValue">—</span>
+        </div>
+        <div class="prep-gauge"><span id="prepBar"></span></div>
+      </div>
+
+      <div class="ticket-perf" aria-hidden="true"></div>
+
+      <div class="summary">
+        <div class="summary-line">
+          <span>Subtotal</span>
+          <span id="paySubtotal">R$ 0,00</span>
+        </div>
+        <div class="summary-line" id="payFeeLine" hidden>
+          <span>Taxa de entrega</span>
+          <span id="payFee">R$ 0,00</span>
+        </div>
+        <div class="summary-total">
+          <span>Total</span>
+          <span id="payTotal">R$ 0,00</span>
+        </div>
+      </div>
+
+      <p class="pay-error" id="payError" role="alert" hidden></p>
+
+      <div class="pay-actions">
+        <button class="pay-back" id="paymentBack" type="button">Voltar</button>
+        <button class="checkout" id="confirmOrder" type="button" disabled>Confirmar pedido</button>
+      </div>
+    </section>
+
+    <section class="ticket-view" id="trackingView" hidden>
+      <div class="ticket-head">
+        <div>
+          <p class="ticket-kicker" id="trackingKicker">Pedido confirmado</p>
+          <h2 class="ticket-title" id="trackingTitle">Acompanhe seu pedido</h2>
+        </div>
+        <button class="ticket-close" data-close type="button" aria-label="Fechar comanda">×</button>
+      </div>
+
+      <div class="ticket-perf" aria-hidden="true"></div>
+
+      <div class="order-badge">
+        <span class="field-label">Número do pedido</span>
+        <strong id="orderId">—</strong>
+      </div>
+
+      <ol class="track-steps" id="trackSteps"></ol>
+
+      <div class="order-recap" id="orderRecap"></div>
+
+      <button class="checkout" id="newOrder" type="button">Fazer novo pedido</button>
+    </section>
+  </aside>
+
+  <div class="scrim" id="scrim" hidden></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
