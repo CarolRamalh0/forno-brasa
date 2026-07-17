@@ -128,4 +128,8 @@ Sobre acessibilidade e responsividade: os grupos de escolha (modalidade, pagamen
 
 ## Padrão de código
 
+<<<<<<< HEAD
 Deixei o código sem comentários, apostando em nomes que se explicam. As funções são curtas e cada uma faz uma coisa. O TypeScript está no modo `strict`, com as flags que reclamam de variável e parâmetro sem uso, então descuido de tipo aparece já na compilação. E todas as rotas têm o tratamento de erro básico pra não derrubar o servidor.
+=======
+Deixei o código sem comentários, apostando em nomes que se explicam. As funções são curtas e cada uma faz uma coisa. O TypeScript está no modo `strict`, com as flags que reclamam de variável e parâmetro sem uso, então descuido de tipo aparece já na compilação. E todas as rotas têm o tratamento de erro básico pra não derrubar o servidor.
+>>>>>>> 876a65eee14c607fc50382d61c937c2fab0fb3ec
